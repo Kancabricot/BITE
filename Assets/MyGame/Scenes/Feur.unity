@@ -2132,6 +2132,10 @@ PrefabInstance:
       value: 31.6
       objectReference: {fileID: 0}
     - target: {fileID: 1378343173387260362, guid: 4dbddf131560aa0499d6cb191594bcaf, type: 3}
+      propertyPath: boss
+      value: 
+      objectReference: {fileID: 3785106557470534531, guid: 79451628bf3c3b943a2784b1bcf964b5, type: 3}
+    - target: {fileID: 1378343173387260362, guid: 4dbddf131560aa0499d6cb191594bcaf, type: 3}
       propertyPath: nbEnemy
       value: 1
       objectReference: {fileID: 0}
@@ -2203,8 +2207,27 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5532604959824789852, guid: 4dbddf131560aa0499d6cb191594bcaf, type: 3}
+      propertyPath: lifeBar
+      value: 
+      objectReference: {fileID: 93603577}
+    - target: {fileID: 8982909414639474211, guid: 4dbddf131560aa0499d6cb191594bcaf, type: 3}
+      propertyPath: navArrow
+      value: 
+      objectReference: {fileID: 724181990}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4dbddf131560aa0499d6cb191594bcaf, type: 3}
+--- !u!114 &93603577 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3783285981256687050, guid: 4dbddf131560aa0499d6cb191594bcaf, type: 3}
+  m_PrefabInstance: {fileID: 93603576}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &95203262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16558,6 +16581,10 @@ PrefabInstance:
       value: 31.6
       objectReference: {fileID: 0}
     - target: {fileID: 1378343173387260362, guid: 4dbddf131560aa0499d6cb191594bcaf, type: 3}
+      propertyPath: boss
+      value: 
+      objectReference: {fileID: 3785106557470534531, guid: 79451628bf3c3b943a2784b1bcf964b5, type: 3}
+    - target: {fileID: 1378343173387260362, guid: 4dbddf131560aa0499d6cb191594bcaf, type: 3}
       propertyPath: nbEnemy
       value: 5
       objectReference: {fileID: 0}
@@ -16629,8 +16656,27 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5532604959824789852, guid: 4dbddf131560aa0499d6cb191594bcaf, type: 3}
+      propertyPath: lifeBar
+      value: 
+      objectReference: {fileID: 669412501}
+    - target: {fileID: 8982909414639474211, guid: 4dbddf131560aa0499d6cb191594bcaf, type: 3}
+      propertyPath: navArrow
+      value: 
+      objectReference: {fileID: 724181990}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4dbddf131560aa0499d6cb191594bcaf, type: 3}
+--- !u!114 &669412501 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3783285981256687050, guid: 4dbddf131560aa0499d6cb191594bcaf, type: 3}
+  m_PrefabInstance: {fileID: 669412500}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &671459974
 PrefabInstance:
   m_ObjectHideFlags: 0
