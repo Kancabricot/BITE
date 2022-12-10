@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     private bool isG1 = false;
     private bool isG2 = false;
     private bool isG3 = false;
-    private GameObject[] enemy;
+    [SerializeField] private GameObject[] enemy;
     
     
 
