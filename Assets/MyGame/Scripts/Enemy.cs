@@ -59,15 +59,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Garden"))
-        {
-            //damageDo
-            FindObjectOfType<Garden>().TakeDamage();
-        }
-    }
-
     public void IsTouch(int damage, int strength, Transform t)
     {
         

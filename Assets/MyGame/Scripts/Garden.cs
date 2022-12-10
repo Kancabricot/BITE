@@ -9,6 +9,8 @@ public class Garden : MonoBehaviour
     [SerializeField] Image lifeBar;
     [SerializeField] private float lifePointMax = 20;
     [SerializeField] private float damageTaken = 1;
+    private float attackSpeed = 1;
+    private bool canAttack;
 
     private void Start()
     {
@@ -20,9 +22,27 @@ public class Garden : MonoBehaviour
         lifeBar.fillAmount = lifePoint / lifePointMax;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            canAttack = true;
+            CallDamage();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            canAttack = false;
+        }
+    }
+
     public void TakeDamage()
     {
         lifePoint -= damageTaken;
+        Debug.Log("oui");
         CheckLife();
     }
 
@@ -32,5 +52,16 @@ public class Garden : MonoBehaviour
         {
             Debug.Log("loose");
         }
+    }
+
+    private void CallDamage()
+    {
+
+        if (canAttack)
+        {
+            TakeDamage();
+            Invoke("CallDamage", attackSpeed);
+        }
+
     }
 }
