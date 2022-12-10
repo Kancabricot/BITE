@@ -7,10 +7,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject Garden1;
     [SerializeField] private GameObject Garden2;
     [SerializeField] private GameObject Garden3;
+    [SerializeField] private GameObject navArrow;
     private bool isG1 = false;
     private bool isG2 = false;
     private bool isG3 = false;
     private GameObject[] enemy;
+    
     
 
     public void SpawnGarden1()
@@ -51,25 +53,28 @@ public class GameManager : MonoBehaviour
  
         if(enemy.Length == 0 && isG1 == true)
         {
-            FindObjectOfType<NavArrow>().LookThree();
+            navArrow.SetActive(true);
             Destroy(Garden1);
             Debug.Log("next wave 1");
+            FindObjectOfType<NavArrow>().LookThree();
             FindObjectOfType<Three>().Completed1();
             isG1 = false;
         }
         else if(enemy.Length == 0 && isG2 == true)
         {
-            FindObjectOfType<NavArrow>().LookThree();
+            navArrow.SetActive(true);
             Destroy(Garden2);
             Debug.Log("Next waves 2");
+            FindObjectOfType<NavArrow>().LookThree();
             FindObjectOfType<Three>().Completed2();
             isG2 = false;
         }
         else if(enemy.Length == 0 && isG3 == true)
         {
-            FindObjectOfType<NavArrow>().LookThree();
+            navArrow.SetActive(true);
             Destroy(Garden3);
             isG3 = false;
+            FindObjectOfType<NavArrow>().LookThree();
             Debug.Log("fini");
         }
 
