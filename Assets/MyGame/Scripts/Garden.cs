@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class Garden : MonoBehaviour
 {
-    [SerializeField] private float lifePoint = 20;
+    [SerializeField] public float lifePoint = 20;
     [SerializeField] Image lifeBar;
-    [SerializeField] private float lifePointMax = 20;
+    [SerializeField] public float lifePointMax = 20;
     [SerializeField] private float damageTaken = 1;
+    [SerializeField] private bool lastGarden = false;
+
     private float attackSpeed = 1;
     private bool canAttack;
 
@@ -50,6 +52,10 @@ public class Garden : MonoBehaviour
     {
         if(lifePoint <= 0)
         {
+            if (lastGarden)
+            {
+                FindObjectOfType<GameManager>().IsFinish();
+            }
             Debug.Log("loose");
         }
     }

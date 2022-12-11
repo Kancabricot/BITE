@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] int lifePoint = 3;
     [SerializeField] ParticleSystem walkFX;
     [SerializeField] ParticleSystem hitFX;
-    [SerializeField] float damageDo = 1;
+    [SerializeField] float damageDo = 2;
 
     [SerializeField] private float rangeVision = 5;
     private float distanceBetween = 1000000;
