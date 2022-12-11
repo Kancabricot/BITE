@@ -7,10 +7,18 @@ using UnityEngine.SceneManagement;
 public class Button_Script : MonoBehaviour
 {
     [SerializeField] GameObject Option;
+    [SerializeField] public GameObject Vic1;
+    [SerializeField] public GameObject Vic2;
+    [SerializeField] public GameObject Vic3;
+    [SerializeField] public GameObject Vic4;
+    [SerializeField] public GameObject sPlayer;
+    [SerializeField] public GameObject sThree;
 
 
     public void QuestOneAccept()
     {
+        Destroy(sThree);
+        sPlayer.SetActive(true);
         FindObjectOfType<GameManager>().SpawnGarden1();
         FindObjectOfType<Three>().QuestOneAccept();
         FindObjectOfType<NavArrow>().QuestOneAccept();
@@ -28,12 +36,58 @@ public class Button_Script : MonoBehaviour
         FindObjectOfType<GameManager>().SpawnGarden3();
         FindObjectOfType<Three>().QuestTreeAccept();
         FindObjectOfType<NavArrow>().QuestTreeAccept();
+        FindObjectOfType<PlayerController>().Upgrade();
+    } 
+    
+    public void QuestFourAccept()
+    {
+        FindObjectOfType<GameManager>().SpawnGarden4();
+        FindObjectOfType<Three>().QuestFourAccept();
+        FindObjectOfType<NavArrow>().QuestFourAccept();
     }
 
-    public void Pause ()
+    public void Pause()
     {
         Option.gameObject.SetActive(true);
         Time.timeScale = 0;
+    }
+    public void Victoir1()
+    {
+        Vic1.gameObject.SetActive(true);
+        Time.timeScale = 0;
+    }
+    public void Victoir2()
+    {
+        Vic2.gameObject.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void Victoir3()
+    {
+        Vic3.gameObject.SetActive(true);
+        Time.timeScale = 0;
+    }
+    public void Victoir4()
+    {
+        Vic4.gameObject.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void ReturnVictoir1()
+    {
+        Vic1.gameObject.SetActive(false);
+        Time.timeScale = 1;
+    }
+    public void ReturnVictoir2()
+    {
+        Vic2.gameObject.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void ReturnVictoir3()
+    {
+        Vic3.gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void Play() 

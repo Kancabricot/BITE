@@ -9,6 +9,8 @@ public class Menu : MonoBehaviour
 {
     [SerializeField] GameObject bCredit;
     [SerializeField] GameObject bOption;
+    [SerializeField] GameObject bSer1;
+    [SerializeField] GameObject bSer2;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,15 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene("Feur");
         Time.timeScale = 1;
+    }
+
+    public void Ser1()
+    {
+        bSer1.gameObject.SetActive(true);
+    }
+    public void Ser2()
+    {
+        bSer2.gameObject.SetActive(true);
     }
 
     public void Credit()

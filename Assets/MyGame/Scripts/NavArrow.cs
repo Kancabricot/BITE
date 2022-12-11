@@ -41,4 +41,9 @@ public class NavArrow : MonoBehaviour
     {
         target = FindObjectOfType<Garden>().gameObject;
     }
+    
+    public void QuestFourAccept()
+    {
+        target = FindObjectOfType<Garden>().gameObject;
+    }
 }
