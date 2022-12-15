@@ -12,16 +12,19 @@ public class Enemy : MonoBehaviour
     [SerializeField] int lifePoint = 3;
     [SerializeField] ParticleSystem walkFX;
     [SerializeField] ParticleSystem hitFX;
-    [SerializeField] float damageDo = 2;
-
-    [SerializeField] private float rangeVision = 5;
+    [SerializeField] ParticleSystem stunFX;
+    public AudioSource audioEnnemy;
     private float distanceBetween = 1000000;
-    private bool isAlive = true;
-    
+    private float tempStun = 1f;
+
     private void Start()
     {
         garden = GameObject.FindGameObjectsWithTag("Garden");
         player = GameObject.FindGameObjectWithTag("Player");
+
+        ChooseTarget();
+
+        GetComponent<NavMeshAgent>().destination = target.position;
     }
 
     private void ChooseTarget()
@@ -38,21 +41,6 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        
-        if (Vector3.Distance(player.transform.position, transform.position) < rangeVision)
-        {
-            target = player.transform;
-        }
-        else
-        {
-            ChooseTarget();
-        }
-
-        if (isAlive)
-        {
-           GetComponent<NavMeshAgent>().destination = target.position;
-        }
-       
         if(GetComponent<Rigidbody>().velocity != new Vector3(0, 0, 0))
         {
             walkFX.Stop();
@@ -65,17 +53,18 @@ public class Enemy : MonoBehaviour
         if(lifePoint <= 0)
         {
             //Destroy(Collider);
+            audioEnnemy.Play();
             GetComponent<TrailRenderer>().enabled = true;
             GetComponent<Rigidbody>().isKinematic = false;
             GetComponent<Rigidbody>().AddForce(new Vector3(t.forward.x, t.forward.y, t.forward.z) * strength, ForceMode.Impulse);
             Invoke("Death", 1f);
-            isAlive = false;
             walkFX.Stop();
             hitFX.Play();
         }
         else
         {
             lifePoint -= damage;
+            Stun();
             hitFX.Play();
         }
         
@@ -91,6 +80,20 @@ public class Enemy : MonoBehaviour
     {
         Destroy(gameObject);
         FindObjectOfType<GameManager>().CheckWave();
+    }
+
+    private void Stun()
+    {
+        GetComponent<Rigidbody>().Sleep();
+        GetComponent<NavMeshAgent>().isStopped = true;
+        stunFX.Play();
+        Invoke("Restart", tempStun);
+    }
+
+    private void Restart()
+    {
+        stunFX.Stop();
+        GetComponent<NavMeshAgent>().isStopped = false;
     }
 
 }

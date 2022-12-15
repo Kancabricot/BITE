@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Animations;
+using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] FloatingJoystick joystick;
+    [SerializeField] FixedJoystick joystick;
     [SerializeField] Image cdBar;
 
     [SerializeField] GameObject allBar;
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float decceleration = 0.1f;
     [SerializeField] float smoothRotation = 0.1f;
     public AudioSource audioPlayer;
+    [SerializeField] GameObject Pelle;
 
     [SerializeField] ParticleSystem walkFX;
 
@@ -137,6 +139,8 @@ public class PlayerController : MonoBehaviour
         {
             if(canAtk == true)
             {
+                Pelle.transform.DORotate(new Vector3(90 + 0, 0),0.15f)
+                    .SetLoops(2,LoopType.Yoyo);
                 audioPlayer.Play();
                 targetfunction.GetComponent<Enemy>().IsTouch(damage, strength, transform);
                 canAtk = false;

@@ -10,6 +10,7 @@ public class Garden : MonoBehaviour
     [SerializeField] public float lifePointMax = 20;
     [SerializeField] private float damageTaken = 1;
     [SerializeField] private bool lastGarden = false;
+    [SerializeField] ParticleSystem fxHit;
 
     private float attackSpeed = 1;
     private bool canAttack;
@@ -44,7 +45,7 @@ public class Garden : MonoBehaviour
     public void TakeDamage()
     {
         lifePoint -= damageTaken;
-        Debug.Log("oui");
+        fxHit.Play();
         CheckLife();
     }
 
@@ -69,5 +70,12 @@ public class Garden : MonoBehaviour
             Invoke("CallDamage", attackSpeed);
         }
 
+    }
+
+    public void DamageBullet(float damage)
+    {
+        lifePoint -= damage;
+        fxHit.Play();
+        Debug.Log("take damage by bullet");
     }
 }

@@ -11,6 +11,8 @@ public class Menu : MonoBehaviour
     [SerializeField] GameObject bOption;
     [SerializeField] GameObject bSer1;
     [SerializeField] GameObject bSer2;
+    [SerializeField] public GameObject SoundOn;
+    [SerializeField] public GameObject SoundOff;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +49,19 @@ public class Menu : MonoBehaviour
     public void Option()
     {
         bOption.gameObject.SetActive(true);
+    }
+    public void sound()
+    {
+        AudioListener.volume = 1;
+        SoundOn.gameObject.SetActive(false);
+        SoundOff.gameObject.SetActive(true);
+    }
+
+    public void soundOff()
+    {
+        AudioListener.volume = 0;
+        SoundOff.gameObject.SetActive(false);
+        SoundOn.gameObject.SetActive(true);
     }
 
     public void bHome()

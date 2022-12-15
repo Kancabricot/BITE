@@ -13,7 +13,8 @@ public class Button_Script : MonoBehaviour
     [SerializeField] public GameObject Vic4;
     [SerializeField] public GameObject sPlayer;
     [SerializeField] public GameObject sThree;
-
+    [SerializeField] public GameObject SoundOn;
+    [SerializeField] public GameObject SoundOff;
 
     public void QuestOneAccept()
     {
@@ -61,6 +62,21 @@ public class Button_Script : MonoBehaviour
         Vic2.gameObject.SetActive(true);
         Time.timeScale = 0;
     }
+
+    public void sound()
+    {
+        AudioListener.volume = 1;
+        SoundOn.gameObject.SetActive(false); 
+        SoundOff.gameObject.SetActive(true);
+    }
+
+    public void soundOff()
+    {
+        AudioListener.volume = 0;
+        SoundOff.gameObject.SetActive(false);
+        SoundOn.gameObject.SetActive(true);
+    }
+
 
     public void Victoir3()
     {

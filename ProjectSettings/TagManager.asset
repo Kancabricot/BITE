@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - Garden
+  - GardenTarget
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -16,7 +18,7 @@ TagManager:
   - Bullet
   - Enemy
   - Enviro
-  - 
+  - Garden
   - 
   - 
   - 

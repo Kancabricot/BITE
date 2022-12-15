@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: d3650cf840f9e7c4c832f9e7f7b4a370
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - target: {instanceID: 0}
+  - player: {instanceID: 0}
+  - bullet: {fileID: 9204706872069323199, guid: c057c1f13c5ee74428e3b3aa3dc47e67, type: 3}
+  - walkFX: {instanceID: 0}
+  - hitFX: {instanceID: 0}
+  - audioEnnemy: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
