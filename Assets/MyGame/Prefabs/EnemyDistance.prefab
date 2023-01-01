@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 9073275522775294092}
   m_Layer: 7
   m_Name: EnemyDistance
-  m_TagString: Enemy
+  m_TagString: EnemyDistance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
   garden: []
   player: {fileID: 0}
   bullet: {fileID: 9204706872069323199, guid: c057c1f13c5ee74428e3b3aa3dc47e67, type: 3}
-  lifePoint: 3
+  lifePoint: 0
   walkFX: {fileID: 6372163397600759919}
   hitFX: {fileID: 7141768014395885174}
   audioEnnemy: {fileID: 8629082291586327920}

@@ -8,6 +8,7 @@ TagManager:
   - Garden
   - GardenTarget
   - Bullet
+  - EnemyDistance
   layers:
   - Default
   - TransparentFX

@@ -17,6 +17,7 @@ public class EnemyDistance : MonoBehaviour
     [SerializeField] private float rangeVision = 5;
     [SerializeField] private float attackSpeed = 2;
     private float distanceBetween = 1000000;
+    private bool checkDistance;
 
     private void Start()
     {
@@ -43,13 +44,17 @@ public class EnemyDistance : MonoBehaviour
     void Update()
     {
 
-        if (Vector3.Distance(target.transform.position, transform.position) < rangeVision)
+        if (Vector3.Distance(target.transform.position, transform.position) < rangeVision && checkDistance == false)
         {
             target = player.transform;
             GetComponent<Rigidbody>().Sleep();
             GetComponent<NavMeshAgent>().isStopped = true;
             Shoot();
-            walkFX.Stop(); 
+            walkFX.Stop();
+            checkDistance = true;
+        }else if (Vector3.Distance(target.transform.position, transform.position) > rangeVision && checkDistance == true)
+        {
+            checkDistance = false;
         }
     }
 

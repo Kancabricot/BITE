@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     // Cache
     Rigidbody rb;
     GameManager gameManager;
+    private bool isDistance = false;
     private bool isTrigger = false;
     private GameObject target;
     
@@ -117,6 +118,14 @@ public class PlayerController : MonoBehaviour
             target = other.gameObject;
             TryToShoot(other.gameObject);
         }
+
+        if (other.CompareTag("EnemyDistance"))
+        {
+            isDistance = true;
+            isTrigger = true;
+            target = other.gameObject;
+            TryToShoot(other.gameObject);
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -124,6 +133,12 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             isTrigger = false;
+        }
+
+        if (other.CompareTag("EnemyDistance"))
+        {
+            isTrigger = false;
+            isDistance = false;
         }
     }
 
@@ -142,7 +157,17 @@ public class PlayerController : MonoBehaviour
                 Pelle.transform.DORotate(new Vector3(90 + 0, 0),0.15f)
                     .SetLoops(2,LoopType.Yoyo);
                 audioPlayer.Play();
-                targetfunction.GetComponent<Enemy>().IsTouch(damage, strength, transform);
+                if(isDistance == true)
+                {
+                    Debug.Log("rentre");
+                    targetfunction.GetComponent<EnemyDistance>().IsTouch(damage, strength, transform);
+                    isDistance = false;
+                }
+                else
+                {
+                    targetfunction.GetComponent<Enemy>().IsTouch(damage, strength, transform);
+                }
+               
                 canAtk = false;
             }
         }
