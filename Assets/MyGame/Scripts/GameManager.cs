@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Cinemachine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,9 +13,23 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject Garden3;
     [SerializeField] private GameObject Garden4;
 
+    [SerializeField] Transform GardenTarget1;
+    [SerializeField] Transform GardenTarget2;
+    [SerializeField] Transform GardenTarget3;
+    [SerializeField] Transform GardenTarget4;
+    [SerializeField] Transform PlayerTarget;
+    
+    [SerializeField] Transform GardenLookAt1;
+    [SerializeField] Transform GardenLookAt2;
+    [SerializeField] Transform GardenLookAt3;
+    [SerializeField] Transform GardenLookAt4;
+    [SerializeField] Transform PlayerLookAt;
+
     [SerializeField] private GameObject navArrow;
 
     [SerializeField] private GameObject winMenu;
+
+    [SerializeField] private CinemachineVirtualCamera vcam;
 
     public Text scoreText;
 
@@ -22,8 +38,11 @@ public class GameManager : MonoBehaviour
     private bool isG3 = false;
     private bool isG4 = false;
     [SerializeField] private GameObject[] enemy;
-    
-    
+
+    private void Start()
+    {
+        //vcam = GetComponent<CinemachineVirtualCamera>();
+    }
 
     public void SpawnGarden1()
     {
@@ -82,6 +101,7 @@ public class GameManager : MonoBehaviour
             FindObjectOfType<Three>().Completed1();
             isG1 = false;
             FindObjectOfType<Button_Script>().Victoir1();
+            ChangeCameraToPLayer();
         }
         else if(enemy.Length == 0 && isG2 == true)
         {
@@ -93,6 +113,7 @@ public class GameManager : MonoBehaviour
             FindObjectOfType<Three>().Completed2();
             isG2 = false;
             FindObjectOfType<Button_Script>().Victoir2();
+            ChangeCameraToPLayer();
         }
         else if(enemy.Length == 0 && isG3 == true)
         {
@@ -104,6 +125,7 @@ public class GameManager : MonoBehaviour
             FindObjectOfType<Three>().Completed3();
             Debug.Log("fini");
             FindObjectOfType<Button_Script>().Victoir3();
+            ChangeCameraToPLayer();
         }
         else if(enemy.Length == 0 && isG4 == true)
         {       
@@ -112,6 +134,7 @@ public class GameManager : MonoBehaviour
             isG4 = false;
             FindObjectOfType<NavArrow>().LookThree();
             FindObjectOfType<Button_Script>().Victoir4();
+            ChangeCameraToPLayer();
         }
 
     }
@@ -125,6 +148,42 @@ public class GameManager : MonoBehaviour
     {
         enemy = GameObject.FindGameObjectsWithTag("Enemy");
         scoreText.text = (enemy.Length).ToString();
+    }
+
+    public void ChangeCameraToGarden()
+    {
+        if(isG1 == true)
+        {
+
+           
+            vcam.Follow = GardenTarget1;
+            vcam.LookAt = GardenLookAt1;
+
+        }
+        else if(isG2 == true)
+        {
+            
+            vcam.Follow = GardenTarget2;
+            vcam.LookAt = GardenLookAt2;
+        }
+        else if (isG3 == true)
+        {
+            
+            vcam.Follow = GardenTarget3;
+            vcam.LookAt = GardenLookAt3;
+        }
+        else
+        {
+            vcam.Follow = GardenTarget4;
+            vcam.LookAt = GardenLookAt4;
+        }
+        
+    }
+    public void ChangeCameraToPLayer()
+    {
+        
+        vcam.Follow = PlayerTarget; 
+        vcam.LookAt = PlayerTarget; 
     }
 
 }
